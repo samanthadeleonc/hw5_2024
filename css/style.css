@@ -1,0 +1,112 @@
+/*keyframe used to animate header logo*/
+#logo {
+    animation: logomove 5s;
+  }
+
+@keyframes logomove {
+    0%   {top: 0px; opacity: 0; width: 25px;}
+    100% {top: 200px; opacity: 1; width: 475px;}
+
+  }
+body {
+    font-family: "Poppins", serif;
+    background-image: url("concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.nav.links {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+a:visited {
+    color: inherit;
+}
+/*creating curved top edges on cards*/
+.card > header:first-child {
+    background-color: #288088;
+    border-style: solid;
+    border-color: #45ADAD;
+    border-width: 2px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 450px;
+}
+.gallery > img {
+    border-style: solid;
+    border-width: 10px;
+    border-color: #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+/*making content wrappable for different views*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*Media Query for 900px screen view*/
+@media screen and (min-width: 900px) {
+    /*making the top header stay on page at all times*/
+    body > :first-child, .nav_links { 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-content: space-around;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        align-content: space-around;
+
+    }
+
+}
+/*Media query for when user prefers reduced motion(logo doesn't animate)*/
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+      animation: none;
+      -webkit-animation: none;
+    }
+}
+/*Media query for print view*/
+@media print {
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        gap: 150px;
+    }
+    .pricing {
+        display: flex;
+        align-items: baseline;
+    }
+    .card {
+        border-style: solid;
+        border-width: 2px;
+        border-color: #45ADDD;
+        flex-basis: 325px;
+    }
+    #gallery, .gallery {
+        display: none;
+    }
+}
